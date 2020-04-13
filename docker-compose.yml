@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  db:
+    image: 'adoniram:latest'
+    ports:
+      - '3306:3306'
+    volumes:
+      - 'adoniram-db:/var/lib/mysql'
+    environment: 
+      - 'MYSQL_ROOT_PASSWORD=adoniram' 
+      - 'MYSQL_DATABASE=adoniram'
+
+  django:
+    build: './adoniram'
+    depends_on:
+      - 'db'
+    image: 'adoniram'
+    env_file:
+      - '.env'
+    ports:
+      - '8000:8000'
+    volumes:
+      - './adoniram:/app'
+
+volumes:
+    adoniram-db: {}
