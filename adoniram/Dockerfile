@@ -1,7 +1,11 @@
 FROM python:3-alpine
 
+# Update alpine and install mysql client
+RUN apk update && \
+    apk add --no-cache build-base mysql-dev mysql-client
+
 # Make sure django is installed
-RUN pip install django
+RUN pip install django mysql client
 
 # Create a project folder in the container
 RUN mkdir webpage
