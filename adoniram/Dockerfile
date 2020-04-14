@@ -10,10 +10,12 @@ RUN mkdir webpage
 WORKDIR webpage
 
 #You copy any local file to the container.
-COPY adoniram .
+COPY . .
 
 # You create the project
 #RUN django-admin startproject adoniram
 
-CMD sh
+# CMD sh
+
+CMD python manage.py runserver 0.0.0.0:8000
 

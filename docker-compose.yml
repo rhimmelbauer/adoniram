@@ -2,7 +2,7 @@ version: '3'
 
 services:
   db:
-    image: 'adoniram:latest'
+    image: 'adoniram-db:latest'
     ports:
       - '3306:3306'
     volumes:
@@ -13,8 +13,8 @@ services:
 
   django:
     build: './adoniram'
-    depends_on:
-      - 'db'
+    # depends_on:
+    #   - 'db'
     image: 'adoniram'
     env_file:
       - '.env'
