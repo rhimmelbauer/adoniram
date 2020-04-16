@@ -20,5 +20,7 @@ from worker import views
 
 urlpatterns = [
     url(r'^$', views.home, name='home'),
+    url(r'^create_user/$', views.create_user, name='create_user'),
+    url(r'^create_work/(?P<iduser>\d+)/$', views.create_work, name='create_work'),
     url(r'^admin$/', admin.site.urls),
 ]

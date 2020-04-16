@@ -21,7 +21,7 @@ services:
     ports:
       - '8000:8000'
     volumes:
-      - './adoniram:/app'
+      - './adoniram:/webpage'
 
 volumes:
     adoniram-db: {}

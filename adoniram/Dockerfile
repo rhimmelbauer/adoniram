@@ -5,7 +5,7 @@ RUN apk update && \
     apk add --no-cache build-base mysql-dev mysql-client
 
 # Make sure django is installed
-RUN pip install django mysql client
+RUN pip install django mysqlclient
 
 # Create a project folder in the container
 RUN mkdir webpage
