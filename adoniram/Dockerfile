@@ -13,6 +13,9 @@ RUN mkdir webpage
 #You make your project the working directory
 WORKDIR webpage
 
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+
 #You copy any local file to the container.
 COPY . .
 
