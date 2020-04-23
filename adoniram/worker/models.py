@@ -19,13 +19,15 @@ class User(AbstractUser):
                   (SX_MANAGER, "Manager"),
                   (SX_CONTRATOR, "Contractor")
     )
-    iduser = models.AutoField(primary_key=True, default=1)
+    username = None
+    iduser = models.AutoField(primary_key=True)
     name = models.CharField(max_length=150)
     last_name = models.CharField(max_length=150)
     email = models.CharField(max_length=150)
     passwords = models.CharField(max_length=150)
     user_type = models.IntegerField('User Type', choices=USER_TYPES, default=SX_CONTRATOR)
     rate = models.DecimalField(max_digits=4, decimal_places=2)
+    USERNAME_FIELD = 'iduser'
 
     class Meta:
         db_table = 'user'
