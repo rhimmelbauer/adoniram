@@ -5,7 +5,12 @@ from django.views.generic import CreateView, DetailView, UpdateView
 
 
 def home(request):
-    return render(request, 'admin_home.html', None)
+    users = User.objects.all()
+    for user in users:
+        user.user_type = User.USER_TYPES[user.user_type - 1][1]
+
+    
+    return render(request, 'admin_home.html', {'users': users})
 
 
 def create_user(request):
@@ -38,6 +43,6 @@ class CreateWorkViewFrom(CreateView):
 
     def form_valid(self, form):
         reported_work = form.save(commit=False)
-        reported_work.iduser = 1
+        reported_work.iduser = User.objects.get(pk=1)
         reported_work.save()
-        return redirect("")
+        return redirect("home")
