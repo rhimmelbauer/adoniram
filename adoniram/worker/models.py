@@ -26,12 +26,19 @@ class User(AbstractUser):
     email = models.CharField(max_length=150)
     passwords = models.CharField(max_length=150)
     user_type = models.IntegerField('User Type', choices=USER_TYPES, default=SX_CONTRATOR)
-    rate = models.DecimalField(max_digits=4, decimal_places=2)
+    rate = models.DecimalField(max_digits=5, decimal_places=2)
     USERNAME_FIELD = 'iduser'
 
     class Meta:
         db_table = 'user'
 
+    def __repr__(self):
+        return f"\nID:{self.iduser}\n" + \
+               f"Name:{self.name}\n" + \
+               f"Last Name:{self.last_name}\n" + \
+               f"email:{self.email}\n" + \
+               f"Type:{self.user_type}\n" + \
+               f"Rate per Hour:{self.rate}\n"
 
 class Group(models.Model):
     id_user_mentor = models.IntegerField(primary_key=True)
